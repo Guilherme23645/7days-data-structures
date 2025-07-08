@@ -14,7 +14,7 @@ class ListaDeCompras:
 
 	def listar_itens(self):
 		for i in range(len(self.itens)):
-			print("\t",self.itens[i],self.quantidades[i])
+			print(f"\t{self.itens[i]}: {self.quantidades[i]}")
 
 l = ListaDeCompras()
 
@@ -30,13 +30,40 @@ while x == "S":
 
 	if acao == "A":
 		print("\n\nAdicionando item")
-		l.adicionar_item(input("\n\n\tNome do item: "), int(input("\n\tQuantidade: ")))
+
+		item = input("\n\n\tNome do item: ").strip()
+
+		while not item.isalpha():
+			print("\n\n\tFormato inválido")
+
+			item = input("\n\n\tNome do item: ").strip()
+
+		quantidade = int(input("\n\n\tQuantidade: ").strip())
+
+		while quantidade <= 0:
+			print("\n\n\tQuantidade deve ser maior ou igual a 1")
+
+			quantidade = int(input("\n\n\tQuantidade: ").strip())
+
+		l.adicionar_item(item, quantidade)
 	elif acao == "R":
 		if l.itens == []:
-			print("\n\nNão há item a ser removido.")
+			print("\n\n\tNão há item a ser removido.")
 		else:
 			print("\n\nRemovendo item")
-			l.remover_item(input("\n\n\tNome do item: "))
+
+			item = input("\n\n\tNome do item: ").strip()
+
+			while item.upper() not in list(map(lambda x: x.upper(), l.itens)):
+				print("\n\n\tItem não se encontra na lista")
+
+				item = input("\n\n\tNome do item: ").strip()
+
+			for i in l.itens:
+				if item.upper() == i.upper():
+					item = i
+
+			l.remover_item(item)
 	elif acao == "L":
 		print("\n\n")
 		l.listar_itens()
