@@ -18,6 +18,8 @@ class ListaDeCompras:
 
 l = ListaDeCompras()
 
+print("\n\nLista de Compras\n\n")
+
 x = "S"
 
 while x == "S":
