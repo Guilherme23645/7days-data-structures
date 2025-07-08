@@ -18,7 +18,7 @@ class ListaDeCompras:
 
 l = ListaDeCompras()
 
-print("\n\nLista de Compras\n\n")
+print("\n\nLista de Compras")
 
 x = "S"
 
