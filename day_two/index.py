@@ -14,16 +14,23 @@ class ListaDePacientes:
 		paciente = Paciente(nome, id, estado)
 
 		if self.head == None:
-			self.head = paciente
-			self.head.proximo = self.tail
+			self.head = self.tail = paciente
 		else:
-			if self.tail == None:
+			if self.head.proximo == None:
 				self.tail = paciente
+				self.head.proximo = self.tail
 			else:
 				self.tail.proximo = paciente
+				self.tail = self.tail.proximo
 
 	def remover_paciente(self):
 		pass
 
 	def listar_pacientes(self):
-		pass
+		listar = self.head
+
+		print(listar.nome, listar.id, listar.estado)
+
+		while listar.proximo != None:
+			listar = listar.proximo
+			print(listar.nome, listar.id, listar.estado)
