@@ -27,11 +27,31 @@ class ListaDeProdutos:
 				self.tail.proximo = produto
 				self.tail = produto
 
-	def remover_produto(self):
-		pass
+	def remover_produto(self, produto):
+		remover = self.head
 
-	def atualizar_produto(self):
-		pass
+		while remover.nome != produto:
+			remover = remover.proximo
+
+		remover.nome = remover.proximo.nome
+		remover.codigo = remover.proximo.codigo
+		remover.preco = remover.proximo.preco
+		remover.quantidade = remover.proximo.quantidade
+		remover.proximo = remover.proximo.proximo
+
+	def atualizar_produto(self, produto, **propriedades):
+		remover = self.head
+
+		while remover.nome != produto:
+			remover = remover.proximo
+
+		for propriedade, valor in propriedades.items():
+			setattr(remover, propriedade, valor)
+		
 
 	def listar_produtos(self):
-		pass
+		produto = self.head
+
+		while produto != None:
+			print(f"Nome: {produto.nome}, Código: {produto.codigo}, Preço: R${produto.preco:.2f}, Quantidade: {produto.quantidade}")
+			produto = produto.proximo
