@@ -31,8 +31,8 @@ class ListaDePacientes:
 
 		if remover == self.tail:
 			remover = self.head
-				while remover.proximo != self.tail:
-					remover = remover.proximo
+			while remover.proximo != self.tail:
+				remover = remover.proximo
 			self.tail = remover
 		else:
 			remover.nome = remover.proximo.nome
