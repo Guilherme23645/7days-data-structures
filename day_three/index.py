@@ -45,8 +45,11 @@ class ListaDeProdutos:
 		while remover.nome != produto:
 			remover = remover.proximo
 
-		for propriedade, valor in propriedades.items():
-			setattr(remover, propriedade, valor)
+		novo = Produto(**propriedades)
+		novo.proximo = remover.proximo
+		novo.anterior = remover.anterior
+
+		remover = novo
 		
 
 	def listar_produtos(self):
