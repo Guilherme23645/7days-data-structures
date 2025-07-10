@@ -24,27 +24,15 @@ class ListaDePacientes:
 				self.tail = self.tail.proximo
 
 	def remover_paciente(self, paciente):
-		if paciente == self.head.nome:
-			remover = self.head
+		remover = self.head
 
-			while remover.proximo != None:
-				remover = remover.proximo
-		elif paciente == self.tail.nome:
-			remover = self.head
+		while remover.nome != paciente:
+			remover = remover.proximo
 
-			while remover.proximo != self.tail:
-				remover = remover.proximo
-
-			self.tail = remover
-			remover.proximo = None
-		else:
-			remover = self.head
-
-			while remover.nome != paciente:
-				remover = remover.proximo
-
-			while remover.proximo != None:
-				pass
+		remover.nome = remover.proximo.nome
+		remover.id = remover.proximo.id
+		remover.estado = remover.proximo.estado
+		remover.proximo = remover.proximo.proximo
 
 
 	def listar_pacientes(self):
