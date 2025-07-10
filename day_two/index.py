@@ -29,7 +29,7 @@ class ListaDePacientes:
 		while remover.nome != paciente:
 			remover = remover.proximo
 
-		if remover = self.tail:
+		if remover == self.tail:
 			remover = self.head
 				while remover.proximo != self.tail:
 					remover = remover.proximo
