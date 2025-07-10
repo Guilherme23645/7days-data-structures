@@ -29,10 +29,16 @@ class ListaDePacientes:
 		while remover.nome != paciente:
 			remover = remover.proximo
 
-		remover.nome = remover.proximo.nome
-		remover.id = remover.proximo.id
-		remover.estado = remover.proximo.estado
-		remover.proximo = remover.proximo.proximo
+		if remover = self.tail:
+			remover = self.head
+				while remover.proximo != self.tail:
+					remover = remover.proximo
+			self.tail = remover
+		else:
+			remover.nome = remover.proximo.nome
+			remover.id = remover.proximo.id
+			remover.estado = remover.proximo.estado
+			remover.proximo = remover.proximo.proximo
 
 
 	def listar_pacientes(self):
