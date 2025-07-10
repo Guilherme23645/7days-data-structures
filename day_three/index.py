@@ -39,18 +39,16 @@ class ListaDeProdutos:
 		remover.quantidade = remover.proximo.quantidade
 		remover.proximo = remover.proximo.proximo
 
-	def atualizar_produto(self, produto, **propriedades):
+	def atualizar_produto(self, produto, nome, codigo, preco, quantidade):
 		remover = self.head
 
 		while remover.nome != produto:
 			remover = remover.proximo
 
-		novo = Produto(**propriedades)
-		novo.proximo = remover.proximo
-		novo.anterior = remover.anterior
-
-		remover = novo
-		
+		remover.nome = nome
+		remover.codigo = codigo
+		remover.preco = preco
+		remover.quantidade = quantidade
 
 	def listar_produtos(self):
 		produto = self.head
