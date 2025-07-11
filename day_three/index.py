@@ -49,6 +49,7 @@ class ListaDeProdutos:
 		remover.codigo = codigo
 		remover.preco = preco
 		remover.quantidade = quantidade
+		# git checkout 851669c para versão com argumentos palavra-chave
 
 	def listar_produtos(self):
 		produto = self.head
