@@ -4,13 +4,18 @@ class Livro:
 		self.paginas = paginas
 
 class PilhaDeLivros:
-	def __init__(self):
-		self.livros = []
+	def __init__(self, capacidade):
 		self.topo = 0
+		self.capacidade = capacidade
+		self.livros = [None] * self.capacidade
 
 	def empilhar(self, titulo, paginas):
-		self.livros[self.topo] = Livro(titulo, paginas)
+		if self.topo == self.capacidade - 1:
+			print("Pilha cheia")
+			return
+
 		self.topo += 1
+		self.livros[self.topo] = Livro(titulo, paginas)
 
 	def desempilhar(self):
 		if self.livros == []:
