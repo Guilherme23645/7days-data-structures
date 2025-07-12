@@ -5,7 +5,7 @@ class Livro:
 
 class PilhaDeLivros:
 	def __init__(self, capacidade):
-		self.topo = 0
+		self.topo = -1
 		self.capacidade = capacidade
 		self.livros = [None] * self.capacidade
 
@@ -18,29 +18,29 @@ class PilhaDeLivros:
 		self.livros[self.topo] = Livro(titulo, paginas)
 
 	def desempilhar(self):
-		if self.livros == []:
+		if self.topo == -1:
 			print("Pilha vazia")
 			return
 
 		self.topo -= 1
 
 	def buscar(self):
-		if self.livros == []:
+		if self.topo == -1:
 			print("Pilha vazia")
 			return
 
-		return self.livros[self.topo]
+		return self.livros[self.topo].titulo
 
 	def listar_livros(self):
-		if self.livros == []:
+		if self.topo == -1:
 			print("Pilha vazia")
 			return
 
-		i = 0
-		while i <= self.topo:
-			print(f"Nome do livro: {self.titulo}, Número de páginas: {self.paginas}")
+		i = self.topo
+		while i > -1:
+			print(f"Nome do livro: {self.livros[i].titulo}, Número de páginas: {self.livros[i].paginas}")
 
-			i += 1
+			i -= 1
 
 
 
