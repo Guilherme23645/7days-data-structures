@@ -19,28 +19,35 @@ class ArvoreProduto:
 
 		if self.raiz is None:
 			node = Node(produto)
+			self.raiz = node
 		else:
+			self._inserir(produto,self.raiz)
 
-
-	def __inserir(self,produto,node):
-		self.produto = produto
-		self.node = node
-
+	def _inserir(self,produto,node):
 		if produto.id < node.produto.id:
 			if node.esquerda is None:
 				new_node = Node(produto)
 				node.esquerda = new_node
 			else:
-				self.__inserir(produto, node.esquerda)
+				self._inserir(produto, node.esquerda)
 		elif produto.id > node.produto.id:
 			if node.direita is None:
 				new_node = Node(produto)
 				node.direita = new_node
 			else:
-				self.__inserir(produto, node.direita)
+				self._inserir(produto, node.direita)
 		else:
-			self.node = Node(produto)
+			node.produto.nome = produto.nome
+			node.produto.quantidade = produto.quantidade
 
 
 	def buscar(self,id):
-		pass
+		return self._buscar(id,self.raiz)
+
+	def _buscar(self,id,node):
+		if node is None or id == node.produto.id:
+			return node.produto.nome
+		elif id < node.produto.id:
+			return self._buscar(id,node.esquerda)
+		else:
+			return self._buscar(id,node.direita)
